@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Commando = require('discord.js-commando');
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
@@ -5,7 +7,7 @@ const sqlite = require('sqlite');
 const sqlite3 = require('sqlite3');
 
 const client = new Commando.Client({
-    owner: '705294233266814978',
+    owner: process.env.OWNER_ID.toString(),
     commandPrefix: '!',
 });
 
@@ -59,5 +61,5 @@ client.registry
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 
-client.login('ODE5MDc3ODU5MzM1MjA4OTYw.YEhXsw.8QI9PJRycOiv6vz5WH_LebO6_HU');
+client.login(process.env.DISCORD_TOKEN.toString());
 
