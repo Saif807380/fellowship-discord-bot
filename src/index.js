@@ -1,10 +1,22 @@
 require('dotenv').config()
 
 const Commando = require('discord.js-commando');
+const mongoose = require('mongoose')
 const path = require('path');
 const oneLine = require('common-tags').oneLine;
 const sqlite = require('sqlite');
 const sqlite3 = require('sqlite3');
+
+mongoose.set('debug', true);
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI, {
+	keepAlive: true,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true
+});
+mongoose.connection.on("open", () => console.log(`MongoDB Connected`));
+mongoose.connection.on("error", console.error.bind(console, "Mongo Error"));
 
 const client = new Commando.Client({
     owner: process.env.OWNER_ID.toString(),
@@ -14,7 +26,6 @@ const client = new Commando.Client({
 client
 	.on('error', console.error)
 	.on('warn', console.warn)
-	.on('debug', console.log)
 	.on('ready', () => {
 		console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 	})
@@ -56,11 +67,12 @@ client.setProvider(
 ).catch(console.error);
 
 client.registry
-	.registerGroup('test', 'Test')
-  .registerGroup('fellow', 'Fellow')
+	.registerGroups([
+    ['test', 'Test'],
+    ['fellow', 'Fellow']
+  ])
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 
 client.login(process.env.DISCORD_TOKEN.toString());
-
