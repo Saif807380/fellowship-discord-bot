@@ -57,6 +57,7 @@ client.setProvider(
 
 client.registry
 	.registerGroup('test', 'Test')
+  .registerGroup('fellow', 'Fellow')
 	.registerDefaults()
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
