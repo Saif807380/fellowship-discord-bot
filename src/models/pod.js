@@ -6,18 +6,19 @@ const pod = new mongoose.Schema({
     required: true
   },
   channelID: {
-    type: String,
+    type: [{
+      type: String,
+      required: true
+    }],
     required: true
   },
-  githubTeamLink: {
-    type: String,
-    required: true
+  fellows: {
+    type: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'fellows',
+    }],
+    default: []
   },
-  fellows: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'fellows',
-    required: true
-  }],
   standups: {
     type: [{
       type: mongoose.Schema.Types.ObjectId,
