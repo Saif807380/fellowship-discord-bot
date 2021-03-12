@@ -42,11 +42,9 @@ module.exports = class AssignFellowCommand extends Commando.Command {
   }
 
   async run(msg, args) {
-    console.log(args);
     const { discordUser, name, githubUsername, podName  } = args;
 
-
-    const pod = await Pod.findOne({ name: podName }).exec();
+    const pod = await Pod.findOne({ name: podName }).populate('fellows').exec();
 
     if (!pod)
       return msg.reply(`Error! Can't find a pod with the name of ${podName}`);
@@ -58,6 +56,9 @@ module.exports = class AssignFellowCommand extends Commando.Command {
         discordID: discordUser.id,
         podID: pod.id,
       });
+
+      pod.fellows.push(fellow);
+      await pod.save();
 
       const message = `Assigned ${name} into pod ${podName}.`;
       return msg.reply(message);
