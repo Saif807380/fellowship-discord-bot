@@ -59,6 +59,10 @@ module.exports = class AssignFellowCommand extends Commando.Command {
 
       pod.fellows.push(fellow);
       await pod.save();
+      
+      const channelRole = msg.guild.roles.cache.find(role => role.name === `pod-${pod.name}`);
+      const fellowDiscord = msg.guild.members.cache.get(fellow.discordID);
+      fellowDiscord.roles.add(channelRole);
 
       const message = `Assigned ${name} into pod ${podName}.`;
       return msg.reply(message);
