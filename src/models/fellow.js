@@ -7,11 +7,13 @@ const fellow = new mongoose.Schema({
   },
   discordID: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
   },
   githubUsername: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
   },
   podID: {
     type: mongoose.Schema.Types.ObjectId,
