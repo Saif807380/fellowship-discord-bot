@@ -2,15 +2,23 @@ const mongoose = require('mongoose');
 
 const standup = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now
+    default: () => new Date().toISOString().slice(0, 10)
   },
-  body: {
+  yesterday: {
     type: String,
     required: true
   },
-  discordID: {
+  today: {
+    type: String,
+    required: true
+  },
+  blockers: {
+    type: String,
+    required: true
+  },
+  shoutouts: {
     type: String,
     required: true
   },
