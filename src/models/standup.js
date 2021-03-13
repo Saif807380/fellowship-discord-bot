@@ -6,11 +6,19 @@ const standup = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-  body: {
+  yesterday: {
     type: String,
     required: true
   },
-  discordID: {
+  today: {
+    type: String,
+    required: true
+  },
+  blockers: {
+    type: String,
+    required: true
+  },
+  shoutouts: {
     type: String,
     required: true
   },
