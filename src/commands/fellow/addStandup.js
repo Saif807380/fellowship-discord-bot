@@ -4,7 +4,7 @@ const Fellow = require('../../models/fellow.js');
 const Pod = require('../../models/pod.js');
 const Standup = require('../../models/standup.js');
 
-module.exports = class AssignFellowCommand extends Commando.Command {
+module.exports = class AddStandupCommand extends Commando.Command {
   constructor(client) {
     super(client, {
       name: 'add-standup',

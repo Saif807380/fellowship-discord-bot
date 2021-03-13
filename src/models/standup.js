@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const standup = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
     required: true,
-    default: Date.now
+    default: () => new Date().toISOString().slice(0, 10)
   },
   yesterday: {
     type: String,
