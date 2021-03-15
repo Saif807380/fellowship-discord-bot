@@ -9,7 +9,7 @@
 - [How we built it](#how-we-built-it)
 - [Challenges we ran into](#challenges-we-ran-into)
 - [Accomplishments that we're proud of](#accomplishments-that-were-proud-of)
-- [What's next for EnvProtecc](#whats-next-for-envprotecc)
+- [What's next for StandUppie](#whats-next-for-standuppie)
 
 ## Installation
 
@@ -50,7 +50,7 @@ We use Node.js with the discord.js library to create the bot. For the persistenc
 - How to properly scope projects
 - Delegate tasks across timezones
 
-## What's next for EnvProtecc
+## What's next for StandUppie
 
 - Add functionality that triggers a bot message on the channel whenever someone from the pod makes a PR to any of the pod projects.
 - Add more command customization.
