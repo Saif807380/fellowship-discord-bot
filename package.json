@@ -4,7 +4,8 @@
   "description": "a discord bot for daily standups in mlh-fellowship",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
